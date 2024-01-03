@@ -8,6 +8,7 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>와이파이 정보 구하기</title>
+<%@page import = "sample.ApiExplorer" %>
 
 </head>
 <body>
@@ -15,7 +16,7 @@
       <nav id="nav1">
 		<span><a href="#">홈</a></span> |
 		<span><a href="#">위치 히스토리 목록</a></span> |
-		<span><a href="#">Open API 와이파이 정보 가져오기</a></span>
+		<span><a href="load-wifi.jsp">Open API 와이파이 정보 가져오기</a></span>
 	  </nav>
 	 <p></p>
 	
