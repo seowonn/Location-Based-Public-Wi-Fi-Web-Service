@@ -25,7 +25,8 @@ public class PublicWifiInfo {
     private String LNT;   
     private String WORK_DTTM;   
     
-    PublicWifiInfo(){}
+    public PublicWifiInfo(){}
+    
     
     public PublicWifiInfo(String x_SWIFI_MGR_NO, String x_SWIFI_WRDOFC, String x_SWIFI_MAIN_NM, String x_SWIFI_ADRES1,
 			String x_SWIFI_ADRES2, String x_SWIFI_INSTL_FLOOR, String x_SWIFI_INSTL_TY, String x_SWIFI_INSTL_MBY,
@@ -55,10 +56,12 @@ public class PublicWifiInfo {
     	String dbFileUrl = "jdbc:sqlite:Mission1.db";
     	Connection conn = null;
     	try {
+    		System.out.println("hello!");
     		Class.forName("org.sqlite.JDBC");
     		conn = DriverManager.getConnection(dbFileUrl);
+    		System.out.println("db connection : " + conn);
     	} catch(Exception e) {
-    		System.out.println(e.getMessage());
+    		System.out.println("aaa" + e.getMessage());
     	}
     	
     	return conn;
@@ -148,39 +151,52 @@ public class PublicWifiInfo {
 			System.out.println(e.getMessage());
 			
 		} finally {
-			try {
-				conn.setAutoCommit(false);
-	            int totalCnt = getTotalDataCnt(conn);
-	            System.out.println("저장된 총 데이터 개수 : " + totalCnt);
-	            conn.commit();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-          if (rs != null) try { rs.close(); } catch(Exception e) {}
-          if (stmt != null) try { stmt.close(); } catch(Exception e) {}
-          if (conn != null) try { conn.close(); } catch(Exception e) {}
-          if (viewSql != null) try { viewSql.close(); } catch(Exception e) {}
-          System.out.println("Successful Insert query!!");
+			if (rs != null) try { rs.close(); } catch(Exception e) {}
+			if (stmt != null) try { stmt.close(); } catch(Exception e) {}
+			if (conn != null) try { conn.close(); } catch(Exception e) {}
+			if (viewSql != null) try { viewSql.close(); } catch(Exception e) {}
+			System.out.println("Successful Insert query!!");
 		}
 		
     }
     
-    private int getTotalDataCnt(Connection conn) {
+    
+    public int getUploadedDataCnt() {
+
     	int totalCnt = 0;
-    	String countQuery = "SELECT COUNT(*) FROM SEOUL_WIFI;";
-    	
+    	String countQuery = "SELECT count(*) FROM SEOUL_WIFI";
     	ResultSet rs = null;
+    	Statement countSql = null;
+    	Connection conn = null;
+    	
 		try {
-			Statement countSql = conn.createStatement();
+			
+	    	conn = this.connect();
+			countSql = conn.createStatement();
+			System.out.println("bb" + conn);
 			rs = countSql.executeQuery(countQuery);
-			while(rs.next())
-				totalCnt = Integer.parseInt(rs.getString(1));
-			countSql.close();
-			rs.close();
+			System.out.println("adfadf" + rs.getString(1));
+			
+			while(rs.next()) {
+//				System.out.println("ccc" + rs.getObject(1));
+				String count = rs.getString(1);
+				System.out.println(count);
+				totalCnt = Integer.parseInt(count);
+			}
+			conn.setAutoCommit(false);
+			conn.commit();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			
+			System.out.println("aaa" + e.getMessage());
+			
+		} finally {
+			if (rs != null) try { rs.close(); } catch(Exception e) {}
+			if (conn != null) try { conn.close(); } catch(Exception e) {}
+			if (countSql != null) try { countSql.close(); } catch(Exception e) {}
+			System.out.println("Successful Insert query!!");
 		}
 		
+		System.out.println("저장된 총 데이터 개수 : " + totalCnt);
     	return totalCnt;
     }
 }

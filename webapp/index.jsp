@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <%@ page import="sample.ApiExplorer" %>
 <html>
+
+
 <head>
 <link href="style.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -11,6 +13,7 @@
 <%@page import = "sample.ApiExplorer" %>
 
 </head>
+
 <body>
     <h1>와이파이 정보 구하기</h1>
       <nav id="nav1">
@@ -19,13 +22,14 @@
 		<span><a href="load-wifi.jsp">Open API 와이파이 정보 가져오기</a></span>
 	  </nav>
 	 <p></p>
-	
-    <span>LAT：<%=request.getAttribute("result") %></span>,<span><input type="text"></span>
-    <span>LNT：<%=request.getAttribute("result") %></span><span><input type="text"></span>
-    <span><input type="button" value="내 위치 가져오기"></span>
+	 
+	<script src="test.js"></script>
+
+	<span>LAT: <input id="currentLat" type="number" value=0.0> ,</span><span> LNT: <input id="currentLnt" type="number" value=0.0></span>
+	<input type="button" onclick="getCurrentPositionLatLng();" value="내 위치 가져오기"/>
     <span><input type="button" value="근처 WIFI 정보 보기"></span>
     
-    <hr> <!-- 밑줄 -->
+    <p></p>
     
     <table id="infoTable">
     	<thead>
