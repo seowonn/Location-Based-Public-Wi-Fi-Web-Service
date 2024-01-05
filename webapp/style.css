@@ -17,17 +17,3 @@ table thead tr {
 	background-color:#04B45F;
 	color: white;
 }
-
-table tbody tr td{
-	text-align: center;
-}
-
-tr.colored:nth-child(even){
-  background-color:#FFFFFF;
-  color:#000000;
-}
-
-tr.colored:nth-child(odd){
-  background-color:#c8c8c8;
-  color:#000000;
-}
