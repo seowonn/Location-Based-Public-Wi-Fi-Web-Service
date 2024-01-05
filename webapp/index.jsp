@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-        pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
         
 <!DOCTYPE html>
 <%@ page import="java.util.*" %>
@@ -19,7 +18,7 @@
     <h1>와이파이 정보 구하기</h1>
       <nav id="nav1">
 		<span><a href="index.jsp">홈</a></span> |
-		<span><a href="#">위치 히스토리 목록</a></span> |
+		<span><a href="history.jsp">위치 히스토리 목록</a></span> |
 		<span><a href="load-wifi.jsp">Open API 와이파이 정보 가져오기</a></span>
 	  </nav>
 	 <p></p>
@@ -30,7 +29,7 @@
 		<span>LAT: <input id="currentLat" name="lat" type="text" value="0.0"> ,</span>
 		<span> LNT: <input id="currentLnt" name="lnt" type="text" value="0.0"></span>
 		<span><input type="button" onclick="getCurrentPositionLatLng()" value="내 위치 가져오기"/></span>
-	    <span><input type="submit" id="nearWifis" value="근처 WIFI 정보 보기"></span>
+	    <span><input type="submit" value="근처 WIFI 정보 보기"></span>
     </form>
     <p></p>
     

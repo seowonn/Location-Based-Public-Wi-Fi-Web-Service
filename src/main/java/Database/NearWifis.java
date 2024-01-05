@@ -24,7 +24,7 @@ public class NearWifis {
 		
 		List<NearWifiDto> nearWifisInfo = new ArrayList<>();
 		
-		String getNearWifiQuery = " SELECT " +
+		String getNearWifisQuery = " SELECT " +
 		  " round(6371*acos(cos(radians(?))*cos(radians(LAT))*cos(radians(LNT) " +
 		  " -radians(?))+sin(radians(?))*sin(radians(LAT))), 4) " + 
 		  " AS distance, * " +
@@ -36,9 +36,8 @@ public class NearWifis {
 		try {						
 			connection = ConnectDB.connectDB();
 			connection.setAutoCommit(false);
-			
 						
-			preparedStatement = connection.prepareStatement(getNearWifiQuery);
+			preparedStatement = connection.prepareStatement(getNearWifisQuery);
 			preparedStatement.setDouble(1, Double.parseDouble(lat));
 			preparedStatement.setDouble(2, Double.parseDouble(lnt));
 			preparedStatement.setDouble(3, Double.parseDouble(lat));
@@ -76,6 +75,8 @@ public class NearWifis {
 		} finally {
 			ConnectDB.close(connection, preparedStatement, resultSet);
 		}
+		
+		SearchedWifis.insertSearchData(lat, lnt);
 		
 		return nearWifisInfo;
 	}
