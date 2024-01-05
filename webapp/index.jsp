@@ -2,37 +2,41 @@
         pageEncoding="utf-8"%>
         
 <!DOCTYPE html>
+<%@ page import="java.util.*" %>
 <%@ page import="sample.ApiExplorer" %>
+<%@ page import="Database.NearWifis" %>
+
 <html>
 
-
 <head>
-<link href="style.css" rel="stylesheet" type="text/css">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>와이파이 정보 구하기</title>
-<%@page import = "sample.ApiExplorer" %>
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>와이파이 정보 구하기</title>
 
 </head>
 
 <body>
     <h1>와이파이 정보 구하기</h1>
       <nav id="nav1">
-		<span><a href="#">홈</a></span> |
+		<span><a href="index.jsp">홈</a></span> |
 		<span><a href="#">위치 히스토리 목록</a></span> |
 		<span><a href="load-wifi.jsp">Open API 와이파이 정보 가져오기</a></span>
 	  </nav>
 	 <p></p>
 	 
 	<script src="test.js"></script>
-
-	<span>LAT: <input id="currentLat" type="number" value=0.0> ,</span><span> LNT: <input id="currentLnt" type="number" value=0.0></span>
-	<input type="button" onclick="getCurrentPositionLatLng();" value="내 위치 가져오기"/>
-    <span><input type="button" value="근처 WIFI 정보 보기"></span>
-    
+	
+	<form action="aroundWifiInfo.jsp" method="get">
+		<span>LAT: <input id="currentLat" name="lat" type="text" value="0.0"> ,</span>
+		<span> LNT: <input id="currentLnt" name="lnt" type="text" value="0.0"></span>
+		<span><input type="button" onclick="getCurrentPositionLatLng()" value="내 위치 가져오기"/></span>
+	    <span><input type="submit" id="nearWifis" value="근처 WIFI 정보 보기"></span>
+    </form>
     <p></p>
     
-    <table id="infoTable">
-    	<thead>
+    <div>
+	    <table id="infoTable">
+	    	<thead>
 		    <tr>
 		    	<th>거리{km)</th>
 		    	<th>관리번호</th>
@@ -52,64 +56,15 @@
 		    	<th>Y좌표</th>
 		    	<th>작업일자</th>
 		    </tr>
-	    </thead>
-	    <tbody>
-	    	<tr height= "70">
-	    		<th scope="row" colspan="100%">위치 정보를 입력한 후에 조회해 주세요.</th>
-	    	</tr>
-	    </tbody>
-    </table>
-    <p id="msg">정수 입력：</p>
-    <form method="post" action="/mygaeapp">
-    <table>
-        <tr>
-            <td>입력</td>
-            <td><input type="text" id="input" name="text1" value="<%=request.getAttribute("input") %>"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="submit" value="전송"></td>
-        </tr>
-    </table>
-    </form>
+		    </thead>
+		    <tbody>
+		    	<tr height= "70">
+		    		<th scope="row" colspan="100%">위치 정보를 입력한 후에 조회해 주세요.</th>
+		    	</tr>
+		    </tbody>
+	    </table>
+    </div>
+    
 </body>
 </html>
 
-
-
-
-        
-<%--
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Sample JSP</title>
-<style>
-h1{
-    font-size: 16pt;
-    background: #AAFFAA;
-    padding: 5px;
-}
-</style>
-</head>
-<body>
-    <h1>JSP Page</h1>
-    <p>Result：<%=request.getAttribute("result") %></p>
-    <hr>
-    <p id="msg">정수 입력：</p>
-    <form method="post" action="/mygaeapp">
-    <table>
-        <tr>
-            <td>입력</td>
-            <td><input type="text" id="input" name="text1" value="<%=request.getAttribute("input") %>"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="submit" value="전송"></td>
-        </tr>
-    </table>
-    </form>
-</body>
-</html>
---%>

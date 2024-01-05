@@ -4,6 +4,8 @@ table {
 	border: 1px silver;
 	border-style: solid;
 	width: 100%;
+	margin-left:auto; 
+    margin-right:auto;
 }
 
 table thead th {

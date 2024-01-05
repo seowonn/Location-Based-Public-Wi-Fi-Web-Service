@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="C:/Users/amusm/Downloads/gson-2.8.6.jar"/>
 	<classpathentry kind="lib" path="C:/java/eclipse-workspace/Mission1Project/sqlite-jdbc-3.34.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amusm/Downloads/json-simple-1.1.jar/json-simple-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amusm/Downloads/lombok.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

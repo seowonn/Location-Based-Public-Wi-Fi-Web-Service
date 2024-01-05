@@ -1,8 +1,4 @@
 
-function test() {
-	alert('테스트 버튼 클릭');
-}
-
 function getCurrentPositionLatLng() {
 	if(navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function(position) {
@@ -16,6 +12,17 @@ function getCurrentPositionLatLng() {
 	}
 }
 
-function getDistanceFromLatLng(lat1, lng1, lat2, lng2, miles){
+function getNearWifis() {
 	
+	const lat = document.getElementById("currentLat").value;
+	const lnt = document.getElementById("currentLnt").value;
+	
+	if(lat != "" || lnt != "") {
+		window.location.assign("http://localhost:8080/Mission1Project/index.jsp/?lat" + lat + "&lnt=" + lnt);
+	} else {
+		alert("위치가 입력되지 않았습니다.")
+	}
+	
+	document.getElementById("currentLat").value = latitude.toFixed(7);
+	document.getElementById("currentLnt").value = longitude.toFixed(7);
 }
