@@ -28,12 +28,12 @@ public class ConnectDB {
 		return connection;
 	}
 	
-	public static void close(Connection connection, PreparedStatement preparedStatement, ResultSet resultSet) {
+	public static void close(Connection connection, Statement statement, ResultSet resultSet) {
 		
 		try {		
 			
 			if(connection != null) connection.close();
-			if(preparedStatement != null) preparedStatement.close();
+			if(statement != null) statement.close();
 			if(resultSet != null) resultSet.close();
 			
 		} catch (SQLException e) {
