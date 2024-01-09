@@ -22,12 +22,22 @@ table tbody tr td{
 	text-align: center;
 }
 
+tbody tr :hover {
+  background-color: #d3d3d3 !important;
+}
+
 tr.colored:nth-child(even){
   background-color:#FFFFFF;
   color:#000000;
 }
 
 tr.colored:nth-child(odd){
-  background-color:#c8c8c8;
+  background-color:#dcdcdc;
   color:#000000;
+}
+
+.btn{
+	text-align: center;
+	margin:auto; 
+	display: block;
 }
