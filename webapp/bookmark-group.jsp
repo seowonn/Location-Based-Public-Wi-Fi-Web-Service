@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ page import="java.util.*" %>
-<%@ page import="Database.SearchedWifis" %>
-<%@ page import="DTO.SearchedWifiDto" %>
+<%@ page import="Database.BookMarkedGroups" %>
+<%@ page import="DTO.BookMarkGroupDto" %>
 <html>
 <head>
 	<link href="style.css" rel="stylesheet" type="text/css">
@@ -38,20 +38,24 @@
 		    </thead>
 		    <tbody>
 		    	<%
-		    		SearchedWifis swf = new SearchedWifis();
-	    			List<SearchedWifiDto> results = swf.getSearchedWifis();
+		    		BookMarkedGroups bmg = new BookMarkedGroups();
+		    		List<BookMarkGroupDto> results = bmg.getEveryBookMarks();
 	    			
 	    			if(results != null) {
-	    				for(SearchedWifiDto serachedWifi : results) {		    					
+	    				for(BookMarkGroupDto bookmarkgroup : results) {	
+	    					String update = bookmarkgroup.getUpdate_date() == null ? "" : bookmarkgroup.getUpdate_date();
 		    				
 		    	%>
 		    		<tr class="colored">
-		    			<td><%=serachedWifi.getCol()%></td>
-		    			<td><%=serachedWifi.getLat()%></td>
-		    			<td><%=serachedWifi.getLnt()%></td>
-		    			<td><%=serachedWifi.getView_date()%></td>
-		    			<td><%=serachedWifi.getView_date()%></td>
-		    			<td><input type="button" onclick="getCurrentPositionLatLng()" value="삭제"/></td>
+		    			<td><%=bookmarkgroup.getId()%></td>
+		    			<td><%=bookmarkgroup.getBookmarkName()%></td>
+		    			<td><%=bookmarkgroup.getOrder()%></td>
+		    			<td><%=bookmarkgroup.getRegister_date()%></td>
+		    			<td><%=update%></td>
+		    			<td>
+		    				<a href=#>수정</a>
+		    				<a href=#>삭제</a>
+						</td>
 		    		</tr>			
 	    		<%}%>
 	    		<%} else {%>
