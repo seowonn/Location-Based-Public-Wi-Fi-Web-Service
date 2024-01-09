@@ -15,7 +15,3 @@ function getCurrentPositionLatLng() {
 function deleteRecord(){
 	
 }
-
-function chkinserted(){
-	alert("북마크 그룹 정보를 추가했습니다.");
-}
