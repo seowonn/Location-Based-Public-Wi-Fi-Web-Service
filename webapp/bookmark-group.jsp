@@ -53,8 +53,8 @@
 		    			<td><%=bookmarkgroup.getRegister_date()%></td>
 		    			<td><%=update%></td>
 		    			<td>
-		    				<a href=#>수정</a>
-		    				<a href=#>삭제</a>
+		    				<a href="bookmark-group-edit.jsp?id=<%=bookmarkgroup.getId()%>">수정</a>
+		    				<a href="bookmark-group-delete.jsp?id=<%=bookmarkgroup.getId()%>">삭제</a>
 						</td>
 		    		</tr>			
 	    		<%}%>

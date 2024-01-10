@@ -10,9 +10,12 @@ import DBConnection.ConnectDB;
 
 public class BookMarkedGroups {
 	
+	
 	public BookMarkedGroups() {}
 	
+	
 	public List<BookMarkGroupDto> getEveryBookMarks(){
+		
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -49,7 +52,8 @@ public class BookMarkedGroups {
 		return bookMarkGroups;
 	}
 	
-	public boolean insertBookMark(String bookMarkName, String order) {
+	
+	public boolean insertBookMarkGroup(String bookMarkName, String order) {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -75,6 +79,113 @@ public class BookMarkedGroups {
 			conn.commit();
 			
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return false;
+			
+		} finally {
+			ConnectDB.close(conn, pstmt, null);
+		}
+		
+		return true;
+	}
+	
+	
+	public BookMarkGroupDto selectOneBookMarkGroup(String id) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		BookMarkGroupDto bmd = null;
+		
+		String selectQuery = "SELECT * FROM BOOKMARK_GROUP WHERE ID = ? ";
+		
+		try {
+			conn = ConnectDB.connectDB();
+			pstmt = conn.prepareStatement(selectQuery);
+			conn.setAutoCommit(false);
+			pstmt.setInt(1, Integer.parseInt(id));
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				
+				bmd = BookMarkGroupDto.builder()
+						.bookmarkName(rs.getString("name"))
+						.order(rs.getString("order"))
+						.build();
+			}
+			
+			
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			ConnectDB.close(conn, pstmt, rs);
+		}
+		
+		return bmd;
+	}
+	
+	
+	public boolean deleteBookMarkGroup(String id) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		String deleteQuery = "DELETE FROM BOOKMARK_GROUP "
+				+ "WHERE ID = ?";
+		
+		try {
+			conn = ConnectDB.connectDB();
+			
+			pstmt = conn.prepareStatement(deleteQuery);
+			conn.setAutoCommit(false);
+			
+			pstmt.setInt(1, Integer.parseInt(id));
+
+			pstmt.executeUpdate();
+			
+			conn.commit();
+			
+		} catch(Exception e) {
+			
+			return false;
+			
+		} finally {
+			ConnectDB.close(conn, pstmt, null);
+		}
+		
+		return true;
+	}
+	
+	
+	public boolean updateBookMarkGroup(String id, String bookMarkName, String order) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		String updateQuery = "UPDATE BOOKMARK_GROUP "
+				+ "SET NAME = ?, \"ORDER\" = ?, UPDATE_DTTM = ? "
+				+ "WHERE ID = ?";
+		
+		try {
+			conn = ConnectDB.connectDB();
+			
+			pstmt = conn.prepareStatement(updateQuery);
+			conn.setAutoCommit(false);
+			
+			pstmt.setString(1, bookMarkName);
+			pstmt.setString(2, order);
+			
+			String date = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
+			pstmt.setString(3, date);
+			
+			pstmt.setInt(4, Integer.parseInt(id));
+		
+			pstmt.executeUpdate();
+			conn.commit();
+			
+		} catch(Exception e) {
 			System.out.println(e.getMessage());
 			return false;
 			
