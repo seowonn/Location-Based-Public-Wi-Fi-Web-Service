@@ -48,8 +48,12 @@
 		    			<td><%=serachedWifi.getLat()%></td>
 		    			<td><%=serachedWifi.getLnt()%></td>
 		    			<td><%=serachedWifi.getView_date()%></td>
-		    			<td><input type="button" onclick="getCurrentPositionLatLng()" value="삭제"/></td>
-		    		</tr>			
+		    			<td>
+		    			<form action="history-delete-submit.jsp" method="post">
+		    				<button type="submit" name="id" value="<%=serachedWifi.getCol()%>">삭제</button>
+		    			</form>
+		    			</td>
+		    		</tr>	
 	    		<%}%>
 	    		<%} else {%>
 			    	<tr height= "70">

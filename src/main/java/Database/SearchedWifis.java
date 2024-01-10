@@ -85,8 +85,35 @@ public class SearchedWifis {
 		return searchedWifisInfo;
 	}
 	
-	public void deleteRecord(int col) {
-		System.out.println("Hi");
+	
+	public boolean deleteSearchedWifi(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		String deleteQuery = "DELETE FROM SEARCH_HISTORY "
+				+ "WHERE COL = ?";
+		
+		try {
+			conn = ConnectDB.connectDB();
+			
+			pstmt = conn.prepareStatement(deleteQuery);
+			conn.setAutoCommit(false);
+			
+			pstmt.setInt(1, Integer.parseInt(id));
+
+			pstmt.executeUpdate();
+			
+			conn.commit();
+			
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+			return false;
+			
+		} finally {
+			ConnectDB.close(conn, pstmt, null);
+		}
+		
+		return true;
 	}
 
 }
