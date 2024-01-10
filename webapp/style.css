@@ -1,5 +1,15 @@
 @charset "UTF-8";
 
+col{
+	width: 20%; 
+	background: #04B45F;
+}
+
+td.label{
+	color: white; 
+	font-weight:bold;
+}
+
 table {
 	border: 1px silver;
 	border-style: solid;
@@ -40,4 +50,10 @@ tr.colored:nth-child(odd){
 	text-align: center;
 	margin:auto; 
 	display: block;
+}
+
+.newBookMark{
+	width: 20%;
+	background: #04B45F;
+	color: white;
 }

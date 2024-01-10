@@ -17,16 +17,17 @@
 
     	BookMarkedGroups bmg = new BookMarkedGroups();
     	if(!bookMarkName.equals("") && !order.equals("")){
-	    	Boolean isInserted = bmg.insertBookMark(bookMarkName, order);
+	    	Boolean isInserted = bmg.insertBookMarkGroup(bookMarkName, order);
 	    	if(isInserted){
     %>
 		    <script>    
 		    	alert("북마크 그룹 정보를 추가했습니다.");
-		    	location.href = "bookmark-group.jsp"
+		    	location.href = "bookmark-group.jsp";
 		    </script>
 		    <%} else { %>
 		    <script>    
 		    	alert("북마크 그룹 정보를 추가하지 못했습니다.");
+		    	location.href = "bookmark-group.jsp";
 		    </script>
 		    <%} %>
 		<%} %>

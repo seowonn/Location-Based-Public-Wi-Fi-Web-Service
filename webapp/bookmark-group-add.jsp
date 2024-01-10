@@ -6,15 +6,8 @@
 	<link href="style.css" rel="stylesheet" type="text/css">
 	<meta charset="UTF-8">
 	<title>와이파이 정보 구하기</title>
-	
-	<style>
-		col#newBookMark {
-			width: 20%;
-			background: #04B45F;
-			color: white;
-		}
-	</style>
 </head>
+
 <body>
 	<h1>북마크 그룹 추가</h1>
 	<nav id="nav1">
@@ -36,18 +29,17 @@
 	 <form action="bookmark-group-add-submit.jsp" method="post">
 	 <div>
 	 	<table>
-	 	
 		 	<colgroup>
-				<col id='newBookMark' />
+		 		<col class="col">
 			</colgroup>
 		
 	 		<tr>
-		 		<td height="45">북마크 이름</td>
+		 		<td class="label" height="45">북마크 이름</td>
 				<td height="45"><input name="bookmarkName" type="text"></td>
 			</tr>
 			
 			<tr>
-				<td height="45">순서</td>
+				<td class="label" height="45">순서</td>
 				<td height="45"><input name="order" type="text"></td>
 			</tr>
 	 	</table>
