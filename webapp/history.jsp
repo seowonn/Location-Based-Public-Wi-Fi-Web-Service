@@ -3,8 +3,8 @@
     
 <!DOCTYPE html>
 <%@ page import="java.util.*" %>
-<%@ page import="Database.SearchedWifis" %>
-<%@ page import="DTO.SearchedWifiDto" %>
+<%@ page import="dao.SearchedWifis" %>
+<%@ page import="dto.SearchedWifiDto" %>
 
 <html>
 <head>

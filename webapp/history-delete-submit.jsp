@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <!DOCTYPE html>
-<%@ page import="Database.SearchedWifis" %>
+<%@ page import="dao.SearchedWifis" %>
 <html>
 <head>
 	<meta charset="UTF-8">

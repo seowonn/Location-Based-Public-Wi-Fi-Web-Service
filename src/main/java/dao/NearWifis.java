@@ -1,4 +1,4 @@
-package Database;
+package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-import DTO.NearWifiDto;
-import DBConnection.ConnectDB;
+import dbConnection.ConnectDB;
+import dto.NearWifiDto;
 
 public class NearWifis {
 	public static Connection connection;

@@ -2,8 +2,8 @@
     
 <!DOCTYPE html>
 <%@ page import="java.util.*" %>
-<%@ page import="Database.NearWifis" %>
-<%@ page import="DTO.NearWifiDto" %>
+<%@ page import="dao.NearWifis" %>
+<%@ page import="dto.NearWifiDto" %>
 
 <html>
 <head>

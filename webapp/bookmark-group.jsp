@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ page import="java.util.*" %>
-<%@ page import="Database.BookMarkedGroups" %>
-<%@ page import="DTO.BookMarkGroupDto" %>
+<%@ page import="dao.BookMarkedGroups" %>
+<%@ page import="dto.BookMarkGroupDto" %>
 <html>
 <head>
 	<link href="style.css" rel="stylesheet" type="text/css">

@@ -1,4 +1,4 @@
-package DBConnection;
+package dbConnection;
 
 import java.sql.DriverManager;
 import java.sql.Connection;
@@ -37,7 +37,7 @@ public class ConnectDB {
 			if(resultSet != null) resultSet.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 

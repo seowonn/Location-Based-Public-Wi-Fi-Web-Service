@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ page import="java.sql.*" %>
-<%@ page import="DBConnection.ConnectDB" %>
+<%@ page import="dbConnection.ConnectDB" %>
     
 
 <!DOCTYPE html>

@@ -1,12 +1,12 @@
-package Database;
+package dao;
 
 import java.sql.*;
 import java.util.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import DTO.BookMarkGroupDto;
-import DBConnection.ConnectDB;
+import dbConnection.ConnectDB;
+import dto.BookMarkGroupDto;
 
 public class BookMarkedGroups {
 	

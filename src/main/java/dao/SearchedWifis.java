@@ -1,12 +1,12 @@
-package Database;
+package dao;
 
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-import DBConnection.ConnectDB;
-import DTO.SearchedWifiDto;
+import dbConnection.ConnectDB;
+import dto.SearchedWifiDto;
 
 public class SearchedWifis {
 	
