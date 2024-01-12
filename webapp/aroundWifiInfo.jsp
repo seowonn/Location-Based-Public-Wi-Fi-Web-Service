@@ -2,8 +2,8 @@
     
 <!DOCTYPE html>
 <%@ page import="java.util.*" %>
-<%@ page import="dao.NearWifis" %>
-<%@ page import="dto.NearWifiDto" %>
+<%@ page import="dao.WIfiInfosDao" %>
+<%@ page import="dto.WIfiInfosDto" %>
 
 <html>
 <head>
@@ -24,11 +24,11 @@
 	 <p></p>
 	 
 	<%
-    	request.setCharacterEncoding("UTF-8");
-    
-    	String lat = request.getParameter("lat");
-    	String lnt = request.getParameter("lnt");
-    %>
+	 	request.setCharacterEncoding("UTF-8");
+	 		 	    
+ 		 	    	String lat = request.getParameter("lat");
+ 		 	    	String lnt = request.getParameter("lnt");
+ 	%>
 	 
 	<script src="test.js"></script>
 	
@@ -69,19 +69,22 @@
 		    </thead>
 		    <tbody>
 		    	<%
-		    		if(!("0.0").equals(lat) && !("0.0").equals(lnt)) {
-		    			NearWifis nwf = new NearWifis();
-		    			List<NearWifiDto> results = nwf.getNearWifis(lat, lnt);
+			    	if(!("0.0").equals(lat) && !("0.0").equals(lnt)) {
+		    			WIfiInfosDao nwf = new WIfiInfosDao();
+		    			List<WIfiInfosDto> results = nwf.getNearWifis(lat, lnt);
 		    			
 		    			if(results != null) {
-		    				for(NearWifiDto nearWifi : results) {		    					
-		    				
-		    	%>
-		    		<tr class="colored">
+		    				for(WIfiInfosDto nearWifi : results) {
+		    					
+
+		    	%>				
+			    	<tr class="colored">
 		    			<td><%=nearWifi.getDistance()%></td>
 		    			<td><%=nearWifi.getMgr_no()%></td>
 		    			<td><%=nearWifi.getWrdofc()%></td>
-		    			<td><%=nearWifi.getMain_nm()%></td>
+			    		<td>
+			    			<a href="detail.jsp?mgrNo=<%=nearWifi.getMgr_no()%>"><%=nearWifi.getMain_nm()%></a>
+			    		</td>
 		    			<td><%=nearWifi.getAdres1()%></td>
 		    			<td><%=nearWifi.getAdres2()%></td>
 		    			<td><%=nearWifi.getInstl_floor()%></td>
@@ -95,7 +98,7 @@
 		    			<td><%=nearWifi.getLat()%></td>
 		    			<td><%=nearWifi.getLnt()%></td>
 		    			<td><%=nearWifi.getWork_dttm()%></td>
-		    		</tr>			
+			    	</tr>			
 	    		<%}%>
 	    		<%}%>
 	    		<%} else {%>
