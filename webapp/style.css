@@ -6,8 +6,23 @@ col{
 }
 
 td.label{
+	background: #04B45F;
 	color: white; 
 	font-weight:bold;
+}
+
+td.info{
+	text-align: left;
+}
+
+tr.info:nth-child(odd){
+  background-color:#FFFFFF;
+  color:#000000;
+}
+
+tr.info:nth-child(even){
+  background-color:#dcdcdc;
+  color:#000000;
 }
 
 table {
@@ -36,12 +51,12 @@ tbody tr :hover {
   background-color: #d3d3d3 !important;
 }
 
-tr.colored:nth-child(even){
+tr.colored:nth-child(odd){
   background-color:#FFFFFF;
   color:#000000;
 }
 
-tr.colored:nth-child(odd){
+tr.colored:nth-child(even){
   background-color:#dcdcdc;
   color:#000000;
 }

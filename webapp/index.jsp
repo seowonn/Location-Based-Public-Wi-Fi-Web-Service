@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <%@ page import="java.util.*" %>
 <%@ page import="sample.ApiExplorer" %>
-<%@ page import="dao.NearWifis" %>
+<%@ page import="dao.WIfiInfosDao" %>
 
 <html>
 
