@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <!DOCTYPE html>
-<%@ page import="dao.BookMarkedGroups" %>
+<%@ page import="dao.BookMarkGroupDao" %>
 <%@ page import="dto.BookMarkGroupDto" %>
 
 <html>
@@ -25,16 +25,16 @@
 	 북마크 그룹 이름을 삭제하시겠습니까?
 	 <p></p>
 		 
-	<%    
-	    request.setCharacterEncoding("UTF-8");
-	    String id = request.getParameter("id");
-	    
-	    BookMarkedGroups bmg = new BookMarkedGroups();
-	    BookMarkGroupDto bmd = bmg.selectOneBookMarkGroup(id);
-	    
-	    String deleteBookMark = bmd.getBookmarkName();
-	    String deleteOrder = bmd.getOrder();
-	%>
+	<%
+		 	request.setCharacterEncoding("UTF-8");
+		 		    String id = request.getParameter("id");
+		 		    
+		 		    BookMarkGroupDao bmg = new BookMarkGroupDao();
+		 		    BookMarkGroupDto bmd = bmg.selectOneBookMarkGroup(id);
+		 		    
+		 		    String deleteBookMark = bmd.getBookmarkName();
+		 		    String deleteOrder = bmd.getOrder();
+		 	%>
 		
 	<div>
 	 	<table>

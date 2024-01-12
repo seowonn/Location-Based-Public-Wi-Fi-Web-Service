@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <!DOCTYPE html>
-<%@ page import="dao.BookMarkedGroups" %>
+<%@ page import="dao.BookMarkGroupDao" %>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -11,16 +11,16 @@
 <body>
 
 	<%
-    	request.setCharacterEncoding("UTF-8");
-    
-    	String deleteId = request.getParameter("id");
+	request.setCharacterEncoding("UTF-8");
+	    
+	    	String deleteId = request.getParameter("id");
 
-    	if(!deleteId.equals("")){
-    		BookMarkedGroups bmg = new BookMarkedGroups();
-	    	Boolean isdeleted = bmg.deleteBookMarkGroup(deleteId);
-	    	
-	    	if(isdeleted){ 
-    %>
+	    	if(!deleteId.equals("")){
+	    		BookMarkGroupDao bmg = new BookMarkGroupDao();
+		    	Boolean isdeleted = bmg.deleteBookMarkGroup(deleteId);
+		    	
+		    	if(isdeleted){
+	%>
 
 		    <script>    
 		    	alert("북마크 그룹 정보를 삭제하였습니다.");

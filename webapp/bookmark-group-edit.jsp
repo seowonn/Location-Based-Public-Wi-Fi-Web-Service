@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
     
 <!DOCTYPE html>
-<%@ page import="Database.BookMarkedGroups" %>
-<%@ page import="DTO.BookMarkGroupDto" %>
+<%@ page import="dao.BookMarkGroupDao" %>
+<%@ page import="dto.BookMarkGroupDto" %>
 
 <html>
 <head>
@@ -23,16 +23,16 @@
 	 </nav>
 	 <p></p>
 		 
-	<%    
-	    request.setCharacterEncoding("UTF-8");
-	    String id = request.getParameter("id");
-	    
-	    BookMarkedGroups bmg = new BookMarkedGroups();
-	    BookMarkGroupDto bmd = bmg.selectOneBookMarkGroup(id);
-	    
-	    String deleteBookMark = bmd.getBookmarkName();
-	    String deleteOrder = bmd.getOrder();
-	%>
+	<%
+		 	request.setCharacterEncoding("UTF-8");
+		 		    String id = request.getParameter("id");
+		 		    
+		 		    BookMarkGroupDao bmg = new BookMarkGroupDao();
+		 		    BookMarkGroupDto bmd = bmg.selectOneBookMarkGroup(id);
+		 		    
+		 		    String deleteBookMark = bmd.getBookmarkName();
+		 		    String deleteOrder = bmd.getOrder();
+		 	%>
 	
 	<form action="bookmark-group-edit-submit.jsp" method="post">
 		<div>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@ page import="dao.BookMarkedGroups" %>
+<%@ page import="dao.BookMarkGroupDao" %>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -10,16 +10,16 @@
 </head>
 <body>
 	<%
-    	request.setCharacterEncoding("UTF-8");
-    
-    	String bookMarkName = request.getParameter("bookmarkName");
-    	String order = request.getParameter("order");
+	request.setCharacterEncoding("UTF-8");
+	    
+	    	String bookMarkName = request.getParameter("bookmarkName");
+	    	String order = request.getParameter("order");
 
-    	BookMarkedGroups bmg = new BookMarkedGroups();
-    	if(!bookMarkName.equals("") && !order.equals("")){
-	    	Boolean isInserted = bmg.insertBookMarkGroup(bookMarkName, order);
-	    	if(isInserted){
-    %>
+	    	BookMarkGroupDao bmg = new BookMarkGroupDao();
+	    	if(!bookMarkName.equals("") && !order.equals("")){
+		    	Boolean isInserted = bmg.insertBookMarkGroup(bookMarkName, order);
+		    	if(isInserted){
+	%>
 		    <script>    
 		    	alert("북마크 그룹 정보를 추가했습니다.");
 		    	location.href = "bookmark-group.jsp";

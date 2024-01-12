@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ page import="java.util.*" %>
-<%@ page import="dao.BookMarkedGroups" %>
+<%@ page import="dao.BookMarkGroupDao" %>
 <%@ page import="dto.BookMarkGroupDto" %>
 <html>
 <head>
@@ -38,13 +38,12 @@
 		    </thead>
 		    <tbody>
 		    	<%
-		    		BookMarkedGroups bmg = new BookMarkedGroups();
-		    		List<BookMarkGroupDto> results = bmg.getEveryBookMarks();
-	    			
-	    			if(results != null) {
-	    				for(BookMarkGroupDto bookmarkgroup : results) {	
-	    					String update = bookmarkgroup.getUpdate_date() == null ? "" : bookmarkgroup.getUpdate_date();
-		    				
+		    	BookMarkGroupDao bmg = new BookMarkGroupDao();
+		    			    		List<BookMarkGroupDto> results = bmg.getEveryBookMarks();
+		    		    			
+		    		    			if(results != null) {
+		    		    				for(BookMarkGroupDto bookmarkgroup : results) {	
+		    		    					String update = bookmarkgroup.getUpdate_date() == null ? "" : bookmarkgroup.getUpdate_date();
 		    	%>
 		    		<tr class="colored">
 		    			<td><%=bookmarkgroup.getId()%></td>

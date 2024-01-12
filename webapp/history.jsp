@@ -3,8 +3,8 @@
     
 <!DOCTYPE html>
 <%@ page import="java.util.*" %>
-<%@ page import="dao.SearchedWifis" %>
-<%@ page import="dto.SearchedWifiDto" %>
+<%@ page import="dao.WifiHistoryDao" %>
+<%@ page import="dto.WifiHistoryDto" %>
 
 <html>
 <head>
@@ -36,12 +36,11 @@
 		    </thead>
 		    <tbody>
 		    	<%
-		    		SearchedWifis swf = new SearchedWifis();
-	    			List<SearchedWifiDto> results = swf.getSearchedWifis();
-	    			
-	    			if(results != null) {
-	    				for(SearchedWifiDto serachedWifi : results) {		    					
-		    				
+		    	WifiHistoryDao swf = new WifiHistoryDao();
+		    			    		    			List<WifiHistoryDto> results = swf.getSearchedWifis();
+		    			    		    			
+		    			    		    			if(results != null) {
+		    			    		    				for(WifiHistoryDto serachedWifi : results) {
 		    	%>
 		    		<tr class="colored">
 		    			<td><%=serachedWifi.getCol()%></td>

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <!DOCTYPE html>
-<%@ page import="dao.SearchedWifis" %>
+<%@ page import="dao.WifiHistoryDao" %>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -11,16 +11,16 @@
 <body>
 
 	<%
-    	request.setCharacterEncoding("UTF-8");
-    
-    	String deleteId = request.getParameter("id");
+	request.setCharacterEncoding("UTF-8");
+	    
+	    	String deleteId = request.getParameter("id");
 
-    	if(!deleteId.equals("")){
-    		SearchedWifis swf = new SearchedWifis();
-	    	Boolean isdeleted = swf.deleteSearchedWifi(deleteId);
-	    	
-	    	if(isdeleted){ 
-    %>
+	    	if(!deleteId.equals("")){
+	    		WifiHistoryDao swf = new WifiHistoryDao();
+		    	Boolean isdeleted = swf.deleteSearchedWifi(deleteId);
+		    	
+		    	if(isdeleted){
+	%>
 
 		    <script>    
 		    	alert("위치 히스토리 정보를 삭제하였습니다.");

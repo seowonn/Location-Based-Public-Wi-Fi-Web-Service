@@ -8,10 +8,10 @@ import java.time.format.DateTimeFormatter;
 import dbConnection.ConnectDB;
 import dto.BookMarkGroupDto;
 
-public class BookMarkedGroups {
+public class BookMarkGroupDao {
 	
 	
-	public BookMarkedGroups() {}
+	public BookMarkGroupDao() {}
 	
 	
 	public List<BookMarkGroupDto> getEveryBookMarks(){
@@ -194,5 +194,36 @@ public class BookMarkedGroups {
 		}
 		
 		return true;
+	}
+	
+	
+	public List<String> getBookMarkGroup(){
+		
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		ArrayList<String> list = new ArrayList<>();
+		
+		String selectQuery = "SELECT DISTINCT NAME FROM BOOKMARK_GROUP";
+		
+		try {
+			conn = ConnectDB.connectDB();
+			conn.setAutoCommit(false);
+			
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(selectQuery);
+			
+			while(rs.next()) {
+				list.add(rs.getString("name"));
+			}
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			ConnectDB.close(conn, stmt, rs);
+		}
+		
+		return list;
 	}
 }
