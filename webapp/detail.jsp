@@ -21,32 +21,30 @@
 		<span><a href="index.jsp">홈</a></span> |
 		<span><a href="history.jsp">위치 히스토리 목록</a></span> |
 		<span><a href="load-wifi.jsp">Open API 와이파이 정보 가져오기</a></span> |
-		<span><a href="#">북마크 보기</a></span> |
+		<span><a href="bookmark-list.jsp">북마크 보기</a></span> |
 		<span><a href="bookmark-group.jsp">북마크 그룹 관리</a></span>		
 	  </nav>
 	 <p></p>
 	 
 	 
-	<form action="#">
-	  <select name="languages" id="lang">
-	    <option value="javascript">북마크 그룹 이름 선택</option>
+	<form action="bookmark-add-submit.jsp" method="post">
+	  <select name="bmGroup">
+	    <option selected disabled>북마크 그룹 이름 선택</option>
 		 <%
+		 	String mgrNo = request.getParameter("mgrNo");
+		 
 		 	BookMarkGroupDao bookMarkGroupDao = new BookMarkGroupDao();
-		 	List<String> list = bookMarkGroupDao.getBookMarkGroup();
+		 	List<String> groups = bookMarkGroupDao.getBookMarkGroup();
 		 	
-		 	if(list != null) {
-		 		for(String group : list){
-		 			
+		 	if(groups != null) {
+		 		for(String group : groups){
 		 %>
-		    <option><%=group %></option>		
+		    <option value="<%=group %>"><%=group %></option>		
 	    	<%} %>
 		<%} %>
 	  </select>
-	  <input type="submit" value="북마크 추가하기" />
-	</form>
-	
+	  <button type="submit" name="mgrNo" value="<%=mgrNo%>">북마크 추가하기</button>
 
-	
 	<div>
 	 	<table>
 		 	<colgroup>
@@ -54,10 +52,10 @@
 			</colgroup>
 			<%
 			    request.setCharacterEncoding("UTF-8");
-			    String mgrNo = request.getParameter("mgrNo");
+			    
 			    int num = 0;
 			
-				if(!mgrNo.equals("")) {
+				if(mgrNo != null) {
 					WIfiInfosDao wifiDao = new WIfiInfosDao();
 					WIfiInfosDto wifiInfo = wifiDao.getWifiInfo(mgrNo);
 					if(wifiInfo != null){
@@ -142,6 +140,7 @@
 			<%}%>
 	 	</table>
 	 </div>
+	 </form>
 	 <p></p>
 </body>
 </html>

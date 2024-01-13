@@ -11,17 +11,17 @@
 <body>
 
 	<%
-	request.setCharacterEncoding("UTF-8");
-	    
-	    	String updateId = request.getParameter("id");
-			String bookMarkName = request.getParameter("bookmarkName");
-			String order = request.getParameter("order");
-		
-	    	if(!updateId.equals("") && !bookMarkName.equals("") && !order.equals("")){
-	    		BookMarkGroupDao bmg = new BookMarkGroupDao();
-		    	Boolean isupdated = bmg.updateBookMarkGroup(updateId, bookMarkName, order);
-		    	
-		    	if(isupdated){
+		request.setCharacterEncoding("UTF-8");
+    
+    	String updateId = request.getParameter("id");
+		String bookMarkName = request.getParameter("bookmarkName");
+		String order = request.getParameter("order");
+	
+    	if(!updateId.equals("") && !bookMarkName.equals("") && !order.equals("")){
+    		BookMarkGroupDao bmg = new BookMarkGroupDao();
+	    	Boolean isupdated = bmg.updateBookMarkGroup(updateId, bookMarkName, order);
+	    	
+	    	if(isupdated){
 	%>
 		    <script>    
 		    	alert("북마크 그룹 정보를 수정하였습니다.");
