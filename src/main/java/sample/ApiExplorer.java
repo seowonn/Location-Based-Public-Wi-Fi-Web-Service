@@ -94,7 +94,7 @@ public class ApiExplorer {
 		}
 		
 		JSONObject oneData = (JSONObject) result.get("TbPublicWifiInfo");
-		requestEndPage = 5; //Integer.parseInt(oneData.get("list_total_count").toString());
+		requestEndPage = Integer.parseInt(oneData.get("list_total_count").toString());
 		System.out.println(requestEndPage);
 		
 		String builtUrl = null;

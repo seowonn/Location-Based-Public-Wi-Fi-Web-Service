@@ -56,12 +56,10 @@ public class PublicWifiInfo {
     	String dbFileUrl = "jdbc:sqlite:Mission1.db";
     	Connection conn = null;
     	try {
-    		System.out.println("hello!");
     		Class.forName("org.sqlite.JDBC");
     		conn = DriverManager.getConnection(dbFileUrl);
-    		System.out.println("db connection : " + conn);
     	} catch(Exception e) {
-    		System.out.println("aaa" + e.getMessage());
+    		System.out.println(e.getMessage());
     	}
     	
     	return conn;
@@ -82,8 +80,8 @@ public class PublicWifiInfo {
 		System.out.println("설치년도" + ":" + this.X_SWIFI_CNSTC_YEAR);
 		System.out.println("실내외구분" + ":" + this.X_SWIFI_INOUT_DOOR);
 		System.out.println("wifi접속환경" + ":" + this.X_SWIFI_REMARS3);
-		System.out.println("Y좌표" + ":" + this.LAT);
-		System.out.println("X좌표" + ":" + this.LNT);
+		System.out.println("Y좌표" + ":" + this.LNT);
+		System.out.println("X좌표" + ":" + this.LAT);
 		System.out.println("작업일자" + ":" + this.WORK_DTTM);
     }
           
@@ -99,7 +97,7 @@ public class PublicWifiInfo {
 		
 		String insertSql = "INSERT INTO SEOUL_WIFI(MGR_NO, WRDOFC, MAIN_NM, ADRES1,"
 				+ "ADRES2, INSTL_FLOOR, INSTL_TY, INSTL_MBY, SVC_SE, CMCWR,"
-				+ "CNSTC_YEAR, INOUT_DOOR, REMARS3, LNT, LAT, WORK_DTTM) VALUES(?,?,?,?,?,"
+				+ "CNSTC_YEAR, INOUT_DOOR, REMARS3, LAT, LNT, WORK_DTTM) VALUES(?,?,?,?,?,"
 				+ "?,?,?,?,?,?,?,?,?,?,?);";
 		
 		try {
@@ -135,8 +133,8 @@ public class PublicWifiInfo {
 			stmt.setString(11, this.X_SWIFI_CNSTC_YEAR);
 			stmt.setString(12, this.X_SWIFI_INOUT_DOOR);
 			stmt.setString(13, this.X_SWIFI_REMARS3);
-			stmt.setString(14, this.LNT);
-			stmt.setString(15, this.LAT);
+			stmt.setString(14, this.LAT);
+			stmt.setString(15, this.LNT);
 			stmt.setString(16, this.WORK_DTTM);
 			
 			stmt.executeUpdate();
