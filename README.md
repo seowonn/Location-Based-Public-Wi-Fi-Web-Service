@@ -13,4 +13,4 @@
 된 북마크들도 삭제되게 설정.
 
 <h3>데모 영상</h3>
-
+[손서원_mission1_제출용.zip](https://github.com/seowonn/mini_web_project/files/13936608/_mission1_.zip)
